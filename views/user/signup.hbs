@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="/stylesheets/user/loginstyle.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<form method="post" action="/signup" id="validationform">
+					<h3>New Account</h3>
+					<div class="form-holder">
+						<span class="lnr lnr-user"></span>
+						<input type="text" class="form-control" placeholder="Username" name="Name">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-phone-handset"></span>
+            <input type="text" class="form-control" placeholder="Phone Number"  name="Phone_Number" >
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+            <input type="text" class="form-control" placeholder="Your EMail" name="Email">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+            <input type="password" class="form-control" placeholder="Password" id="password" name="Password">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
+					</div>
+					<div class="d-flex justify-content-center">
+              <button type="submit">
+						<span>Register</span>
+					</button>
+				</form>
+			</div>
+			
+		</div>
+
+
+     {{!-- jQuery --}}
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+    {{!-- ValidationCode --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+    <script src="/javascripts/user/validation.js"></script>
+		<script src="/javascripts/user/jquery-3.3.1.min.js"></script>
+		<script src="/javascripts/user/loginmain.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+{{!-- <section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form method="post" action="/signup" id="validationform">
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" name="Name" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="number"  name="Phone_Number" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg">Mobile Number</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3cg" name="Email" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="password" name="Password" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" name="confirm_password" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                </div>
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Sign up</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> --}}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- STYLE CSS -->
+  <link rel="stylesheet" href="/stylesheets/user/loginstyle.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="inner">
+      <form method="post" action="/login" id="validationform">
+        <h3>Login</h3>
+        <div class="form-holder">
+          <span class="lnr lnr-envelope"></span>
+          <input type="text" class="form-control" placeholder="Your EMail" name="Email">
+        </div>
+        <div class="form-holder">
+          <span class="lnr lnr-lock"></span>
+          <input type="password" class="form-control" placeholder="Password" id="password" name="Password">
+        </div>
+        <p class="text-center text-muted mt-3 mb-0"><a href="/forgotpassword" class="fw-bold text-body"><u>Forget
+              Password</u></a></p>
+        <div class="d-flex justify-content-center mt-0 mb-2">
+          <button type="submit">
+            <span>Log In</span>
+          </button>
+          </div>
+          <p class="text-center text-muted mt-3 mb-0"><a href="/signup" class="fw-bold text-body text-center"><u>Create New account Register here</u></a></p>
+      </form>
+    </div>
+  </div>
+
+
+  {{!-- jQuery --}}
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+  {{!-- ValidationCode --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="/javascripts/user/validation.js"></script>
+  <script src="/javascripts/user/jquery-3.3.1.min.js"></script>
+  <script src="/javascripts/user/loginmain.js"></script>
+</body>
+
+</html>

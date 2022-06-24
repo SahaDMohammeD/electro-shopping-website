@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Ample Admin Lite Template by WrapPixel</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/admin/adminplugins/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="/admin/css/style.min.css" rel="stylesheet">
+    <link href="/admin/css/edit.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+    {{>sidebar}}
+    <div class="page-wrapper ">
+        <form action="/admin/edit-Product/{{productData._id}}" method="post" id="productValidation" enctype="multipart/form-data">
+            <div class="container register">
+                <div class="row">
+                    <div class="col-md-9 register-right">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                {{!-- <h3 class="register-heading">Edit Product</h3> --}}
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputEmail4">Name</label>
+                                            <input type="text" class="form-control" id="inputEmail4" placeholder="Name"
+                                                name="name" value="{{productData.name}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword4">MRP Price</label>
+                                            <input type="number" class="form-control" id="inputPassword4"
+                                                placeholder="Price" name="mrpprice" value="{{productData.mrpprice}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAddress">Description</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                placeholder="Description" name="description"
+                                                value="{{productData.description}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputAddress2">Stock</label>
+                                            <input type="number" class="form-control" id="inputAddress2"
+                                                placeholder="Stock" name="stock" value="{{productData.stock}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputCity">Discount</label>
+                                            <input type="number" class="form-control" id="inputCity"
+                                                placeholder="Discount" name="discount" value="{{productData.discount}}">
+                                        </div>
+                                         <div>
+                                    <label for="inputState">Category</label>
+                                    <select id="inputState" class="form-control" name="category">
+                                        {{!-- <option selected>Choose....</option> --}}
+                                        {{#each category}}
+                                        <option>{{this.Name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    </div>
+                                    </div>
+                                    <!-- Image Input -->
+
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="form-outline">
+                                                <img src="/images/{{productData.images.[0].image1}}" alt=""
+                                                    style="width: 85px;height: 85px;">
+                                                <input type="text" id="form6Example1"
+                                                    value="{{productData.images.[0].image1}}" class="form-control"
+                                                    style="display: none;" name="image1">
+                                                <input type="file" id="form6Example1" class="form-control mb-6"
+                                                    name="image_1">
+                                                <label class="form-label" for="form6Example1">Image 1</label>
+                                            </div>
+                                        </div>
+                                        <div class="col ">
+                                            <div class="form-outline">
+                                                <img src="/images/{{productData.images.[0].image2}}" alt=""
+                                                    style="width: 85px;height: 85px;">
+                                                <input type="text" value="{{productData.images.[0].image2}}"
+                                                    id="form6Example2" class="form-control mb-6" style="display: none;"
+                                                    name="image2" >
+                                                <input type="file" id="form6Example2" class="form-control mb-6"
+                                                    name="image_2" />
+                                                <label class="form-label" for="form6Example2">Image 2</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="form-outline">
+                                                <img src="/images/{{productData.images.[0].image3}}" alt=""
+                                                    style="width: 85px;height: 85px;">
+                                                <input type="text" value="{{productData.images.[0].image3}}"
+                                                    style="display: none;" id="form6Example1" class="form-control"
+                                                    name="image3" />
+                                                <input type="file" id="form6Example1" class="form-control mb-6"
+                                                    name="image_3" >
+                                                <label class="form-label" for="form6Example1">Image 3</label>
+                                            </div>
+                                        </div>
+                                        <div class="col ">
+                                            <div class="form-outline">
+                                                <img src="/images/{{productData.images.[0].image4}}" alt=""
+                                                    style="width: 85px;height: 85px;">
+                                                <input type="text" value="{{productData.images.[0].image4}}"
+                                                    style="display: none;" id="form6Example2" class="form-control"
+                                                    name="image4" />
+                                                <input type="file" id="form6Example2" class="form-control mb-6"
+                                                    name="image_4" >
+                                                <label class="form-label " for="form6Example2">Image 4</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit"
+                                        class="btn btn-primary btn-block mb-4 float-end">Submit</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Content End -->
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    {{!-- warpEnd --}}
+    </div>
+
+    {{!-- jQuery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    {{!-- ValidationCode --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+        integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/admin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/javascripts/admin/product-validation.js"></script>
+    <script src="/admin/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/js/app-style-switcher.js"></script>
+    <!--Wave Effects -->
+    <script src="/admin/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/admin/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/admin/js/custom.js"></script>
+</body>
+
+</html>

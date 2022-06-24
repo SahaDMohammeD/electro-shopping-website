@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Electro - HTML Ecommerce Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/user/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/user/slick.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/user/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/user/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="/stylesheets/user/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/user/style.css" />
+
+	{{!-- Ajax --}}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+	<!-- HEADER -->
+	<header>
+
+		<!-- HEADER -->
+		<header>
+			<!-- MAIN HEADER -->
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<img src="/images/user/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
+
+					</div>
+					<!-- row -->
+					<div class="dropdown header-links pull-right">
+						<div class="dropdown header-links pull-right">
+							{{#if user}}
+							<li><a href=""><i class="fa fa-user-o"></i>{{user.Name}}</a></li>
+							<li><a href="/profile">My Profile</a></li>
+							<li><a href="/logout">Logout</a></li>
+							{{else}}
+							<li><a href="/login"><i class="fa fa-user-o"></i>Login</a></li>
+							{{/if}}
+						</div>
+					</div>
+					<!-- container -->
+				</div>
+				<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Payment details</h3>
+						<ul class="breadcrumb-tree">
+							<a href="/">
+								<li>Home</li>
+							</a>
+							<li class="active">/Payment</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<form action="" id="payment-form">
+						<div class="col-md-7">
+							<!-- Billing Details -->
+							<div class="billing-details">
+								<div class="section-title">
+									<h3 class="title">Billing address</h3>
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="Name" id="name" placeholder="Name"
+										value="{{checkOutAddress.Name}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="Address" id="address" placeholder="Address"
+										value="{{checkOutAddress.Address}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="City" id="city" placeholder="City"
+										value="{{checkOutAddress.City}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="State" id="state" placeholder="State"
+										value="{{checkOutAddress.State}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="Country" id="country" placeholder="Country"
+										value="{{checkOutAddress.Country}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="Pincode" id="pincode" placeholder="ZIP Code"
+										value="{{checkOutAddress.Pincode}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="tel" name="Number" id="number" placeholder="Telephone"
+										value="{{checkOutAddress.Number}}">
+								</div>
+							</div>
+							<!-- /Billing Details -->
+						</div>
+
+						<!-- Order Details -->
+						<div class="col-md-5 order-details">
+							<div class="section-title text-center">
+								<h3 class="title">Your Order</h3>
+							</div>
+							<div class="order-summary">
+								<div class="order-col">
+									<div><strong>PRODUCT</strong></div>
+									<div><strong>PRICE</strong></div>
+									<div><strong>TOTAL</strong></div>
+								</div>
+								<div class="order-products">
+									{{#each cartDetailes.products}}
+									<div class="order-col">
+										<div>{{this.quantity}}x {{productId.name}}</div>
+										<div>{{this.price}}</div>
+										<div>{{this.subtotal}}</div>
+									</div>
+									{{/each}}
+								</div>
+								<div class="order-col">
+									<div><strong>TOTAL</strong></div>
+									<div><strong class="order-total">{{cartDetailes.total}}</strong></div>
+								</div>
+							</div>
+
+							<div class="payment-method">
+								<div class="input-radio">
+									<input type="radio" name="payment" id="payment-2" value="ONLINE">
+									<label for="payment-2">
+										<span></span>
+										Online Payment
+									</label>
+
+								</div>
+								<div class="input-radio">
+									<input type="radio" name="payment" id="payment-3" value="COD">
+									<label for="payment-3">
+										<span></span>
+										Cash on Delivery
+									</label>
+
+								</div>
+							</div>
+							{{#if cartDetailes}}
+							<button class="primary-btn order-submit" type="submit"><a>Place order</a></button>
+							{{/if}}
+						</div>
+						<!-- /Order Details -->
+					</form>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+
+		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+									incididunt ut.</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Categories</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hot deals</a></li>
+									<li><a href="#">Laptops</a></li>
+									<li><a href="#">Smartphones</a></li>
+									<li><a href="#">Cameras</a></li>
+									<li><a href="#">Accessories</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+		</footer>
+		<!-- /FOOTER -->
+
+
+		 {{!-- razerpay --}}
+         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+		<script>
+			$("#payment-form").submit((e) => {
+				e.preventDefault()
+				$.ajax({
+					url: '/place-order',
+					method: 'post',
+					data: $('#payment-form').serialize(),
+					success: (response) => {
+						if (response.codSuccess) {
+							location.href = '/confirmation'
+						} else {
+							console.log('Online Payment')
+							console.log(response)
+							razorpayPayment(response)
+						}
+
+					}
+				})
+			})
+			function razorpayPayment(order) {
+				//console.log(order)
+				var options = {
+					"key": "rzp_test_71eRwcGz4vx5LP", // Enter the Key ID generated from the Dashboard
+					"amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+					"currency": "INR",
+					"name": "Electro",
+					"description": "Test Transaction",
+					"image": "https://example.com/your_logo",
+					"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+					"handler": function (response) {
+						;
+
+						verifyPayment(response, order)
+					},
+					"prefill": {
+						"name": "Gaurav Kumar",
+						"email": "gaurav.kumar@example.com",
+						"contact": "9999999999"
+					},
+					"notes": {
+						"address": "Razorpay Corporate Office"
+					},
+					"theme": {
+						"color": "#3399cc"
+					}
+				};
+				var rzp1 = new Razorpay(options);
+				rzp1.open();
+			}
+			function verifyPayment(payment, order) {
+				console.log(payment)
+				console.log(order)
+				$.ajax({
+					url: '/verify-payment',
+					method: 'post',
+					data: {
+						payment,
+						order
+					},
+					success: (response) => {
+						if (response.status) {
+							location.href = '/confirmation'
+						}
+						else {
+							alert("payment failed")
+						}
+					}
+				})
+			}
+		</script>
+
+
+		<!-- jQuery Plugins -->
+		<script src="/javascripts/bootstrap.min.js"></script>
+		<script src="/javascripts/slick.min.js"></script>
+		<script src="/javascripts/nouislider.min.js"></script>
+		<script src="/javascripts/jquery.zoom.min.js"></script>
+		<script src="/javascripts/main.js"></script>
+
+</body>
+
+</html>

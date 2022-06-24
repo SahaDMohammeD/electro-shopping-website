@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Electro</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/user/bootstrap.min.css" />
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/user/slick.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/user/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/user/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="/stylesheets/user/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/user/style.css" />
+
+    {{!-- Ajax --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        .card {
+            width: 444px;
+        }
+
+        body {
+            background: #eee;
+        }
+
+        .hh-grayBox {
+            background-color: #F8F8F8;
+            margin-bottom: 20px;
+            padding: 35px;
+            margin-top: 20px;
+        }
+
+        .pt45 {
+            padding-top: 45px;
+        }
+
+        .order-tracking {
+            text-align: center;
+            width: 33.33%;
+            position: relative;
+            display: block;
+        }
+
+        .order-tracking .is-complete {
+            display: block;
+            position: relative;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            border: 0px solid #AFAFAF;
+            background-color: #f7be16;
+            margin: 0 auto;
+            transition: background 0.25s linear;
+            -webkit-transition: background 0.25s linear;
+            z-index: 2;
+        }
+
+        .order-tracking .is-complete:after {
+            display: block;
+            position: absolute;
+            content: '';
+            height: 14px;
+            width: 7px;
+            top: -2px;
+            bottom: 0;
+            left: 5px;
+            margin: auto 0;
+            border: 0px solid #AFAFAF;
+            border-width: 0px 2px 2px 0;
+            transform: rotate(45deg);
+            opacity: 0;
+        }
+
+        .order-tracking.completed .is-complete {
+            border-color: #27aa80;
+            border-width: 0px;
+            background-color: #27aa80;
+        }
+
+        .order-tracking.completed .is-complete:after {
+            border-color: #fff;
+            border-width: 0px 3px 3px 0;
+            width: 7px;
+            left: 11px;
+            opacity: 1;
+        }
+
+        .order-tracking p {
+            color: #A4A4A4;
+            font-size: 16px;
+            margin-top: 8px;
+            margin-bottom: 0;
+            line-height: 20px;
+        }
+
+        .order-tracking p span {
+            font-size: 14px;
+        }
+
+        .order-tracking.completed p {
+            color: #000;
+        }
+
+        .order-tracking::before {
+            content: '';
+            display: block;
+            height: 3px;
+            width: calc(100% - 40px);
+            background-color: #f7be16;
+            top: 13px;
+            position: absolute;
+            left: calc(-50% + 20px);
+            z-index: 0;
+        }
+
+        .order-tracking:first-child:before {
+            display: none;
+        }
+
+        .order-tracking.completed:before {
+            background-color: #27aa80;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+
+
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="#" class="logo">
+                                <img src="/images/user/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /LOGO -->
+
+                    <!-- SEARCH BAR -->
+                    <div class="col-md-6">
+                        <div class="header-search">
+                            <form>
+                                <select class="input-select">
+                                    <option value="0">All Categories</option>
+                                    <option value="1">Category 01</option>
+                                    <option value="1">Category 02</option>
+                                </select>
+                                <input class="input" placeholder="Search here">
+                                <button class="search-btn">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /SEARCH BAR -->
+
+                    <!-- ACCOUNT -->
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <!-- Cart -->
+                            <div>
+                                <a href="/view-cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Your Cart</span>
+                                    <div class="qty" id="cart-count">{{cartCount}}</div>
+                                </a>
+                            </div>
+                            <!-- /Cart -->
+                            <!-- Wishlist -->
+                            <div>
+                                <a href="/view-wish-list">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span>Your Wishlist</span>
+                                    <div class="qty" id="wishlist-count">{{wishListCount}}</div>
+                                </a>
+                            </div>
+                            <!-- /Wishlist -->
+                        </div>
+                    </div>
+                    <!-- /ACCOUNT -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- /MAIN HEADER -->
+        <!-- TOP HEADER -->
+        <div id="top-header">
+            <div class="container">
+                <div class="dropdown header-links pull-right">
+                    <div class="dropdown header-links pull-right">
+                        {{#if user}}
+                        <li><a href=""><i class="fa fa-user-o"></i>{{user.Name}}</a></li>
+                        <li><a href="/profile">My Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        {{else}}
+                        <li><a href="/login"><i class="fa fa-user-o"></i>Login</a></li>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <!-- /TOP HEADER -->
+    </header>
+    <!-- /HEADER -->
+
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="breadcrumb-header">Orderdetails</h3>
+                    <ul class="breadcrumb-tree">
+                        <a href="/">
+                            <li>Home</li>
+                        </a>
+                        <li class="active">/Orderdetails</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /BREADCRUMB -->
+
+
+    <div class="container" style="padding-left: 180px;">
+        <div class="row ">
+            <div class="col-12 col-md-10 hh-grayBox pt45 pb20 text-center">
+                <div class="row justify-content-between">
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Ordered<br></p>
+                    </div>
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Shipped<br></p>
+                    </div>
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Delivered<br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!--================ confirmation part start =================-->
+<section class="confirmation_part padding_top mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lx-4">
+                <div class="single_confirmation_details">
+                    <h4>Shipping Address</h4>
+                    <ul>
+                        <li>
+                            <p>Name: {{orderSummary.shippingAddress.Name}}</p>
+                        </li>
+                        <li>
+                            <p>Address: {{orderSummary.shippingAddress.Address}}</p>
+                        </li>
+                        <li>
+                            <p>Phone Number: {{orderSummary.shippingAddress.Number}}, Pincode:
+                                {{orderSummary.shippingAddress.Pincode}}</p>
+                        </li>
+                        <li>
+                            <p>City: {{orderSummary.shippingAddress.City}}, State:
+                                {{orderSummary.shippingAddress.State}}, Country:
+                                {{orderSummary.shippingAddress.Country}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-lx-4">
+                <div class="single_confirmation_details">
+                    <h4>Order Info</h4>
+                    <ul>
+                        <li>
+                            <p>Total Amount: {{orderSummary.grandTotal}}</p>
+                        </li>
+                        <li>
+                            <p>Payment Method: {{orderSummary.payment_Method}}</p>
+                        </li>
+                        <li>
+                            <p>Ordered On: {{orderSummary.ordered_on}}</p>
+                        </li>
+                    </ul>
+                </div>
+                {{#if orderSummary.cancel}}
+                <a class="btn btn-danger" href="">Order Cancelled</a>
+                {{else}}
+                <a class="btn btn-danger" href="/orderCancelled">Cancel</a>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="order_details_iner">
+                    <h3>Order Summary</h3>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="2">Product</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each productDetail.products}}
+                            <tr>
+                                <th colspan="2"><span><img height="125px" width="175px"
+                                            src="/images/{{productId.images.[0].image1}}" alt=""></span></th>
+                                <th>{{ProductI.Name}}</th>
+                                <th>{{price}}</th>
+                                <th>{{quantity}}</th>
+                                <th> <span>{{subtotal}}</span></th>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="col" colspan="5">Total Amount</th>
+                                <th scope="col">{{orderSummary.grandTotal}}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ confirmation part end =================-->
+
+
+<!-- FOOTER -->
+<footer id="footer">
+    <!-- top footer -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">About Us</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut.</p>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Categories</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Hot deals</a></li>
+                            <li><a href="#">Laptops</a></li>
+                            <li><a href="#">Smartphones</a></li>
+                            <li><a href="#">Cameras</a></li>
+                            <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix visible-xs"></div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Information</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Orders and Returns</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Service</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">View Cart</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /top footer -->
+</footer>
+<!-- /FOOTER -->
+
+
+
+<script>
+    var foo = "{{orderSummary.status}}";
+    var div = document.getElementsByClassName("order-tracking")
+    if (foo == "placed") {
+        div[0].classList.add('completed')
+    } else if (foo == "Shipped") {
+        div[0].classList.add('completed')
+        div[1].classList.add('completed')
+    } else if (foo == "Delivered") {
+        div[0].classList.add('completed')
+        div[1].classList.add('completed')
+        div[2].classList.add('completed')
+    }
+</script>
+
+
+<!-- jQuery Plugins -->
+<script src="/javascripts/user/bootstrap.min.js"></script>
+<script src="/javascripts/user/slick.min.js"></script>
+<script src="/javascripts/user/nouislider.min.js"></script>
+<script src="/javascripts/user/jquery.zoom.min.js"></script>
+<script src="/javascripts/user/main.js"></script>
+
+
+</body>
+
+</html>

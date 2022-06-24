@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title></title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="css/style.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    {{>sidebar}}
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb bg-white">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                     <h4 class="page-title">Order Detailes</h4>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title">Order Detailes</h3>
+                        <div class="container">
+                            <!--================ confirmation part start =================-->
+                            <section class="confirmation_part padding_top mt-5">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-lx-4">
+                                            <div class="single_confirmation_details">
+                                                <h4>Shipping Address</h4>
+                                                <ul>
+                                                    <li>
+                                                        <p>Name: {{orderSummary.shippingAddress.Name}}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Address: {{orderSummary.shippingAddress.Address}}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Phone Number: {{orderSummary.shippingAddress.Number}}, Pincode: {{orderSummary.shippingAddress.Pincode}}</p>   
+                                                    </li>
+                                                    <li>
+                                                       <p>City: {{orderSummary.shippingAddress.City}}, State: {{orderSummary.shippingAddress.State}}, Country: {{orderSummary.shippingAddress.Country}}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-lx-4">
+                                            <div class="single_confirmation_details">
+                                                <h4>Order Info</h4>
+                                                <ul>
+                                                    <li>
+                                                        <p>Total Amount: {{orderSummary.grandTotal}}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Payment Method: {{orderSummary.payment_Method}}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Ordered On: {{orderSummary.ordered_on}}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="order_details_iner">
+                                                <h3>Order Summary</h3>
+                                                <table class="table table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Price</th>
+                                                            <th scope="col">Quantity</th>
+                                                            <th scope="col">Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each productDetail.products}}
+                                                        <tr>
+                                                            <th>{{ProductI.Name}}</th>
+                                                            <th>{{price}}</th>
+                                                            <th>{{quantity}}</th>
+                                                            <th> <span>{{subtotal}}</span></th>
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="col" colspan="5">Total Amount</th>
+                                                            <th scope="col">{{orderSummary.grandTotal}}</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--================ confirmation part end =================-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+        </div>
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app-style-switcher.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
