@@ -265,8 +265,6 @@ module.exports = {
   },
   getSubTotalAmount: (userId) => {
     let id = Mongoose.Types.ObjectId(userId);
-    // console.log(id +'Sub Total');
-
     return new Promise(async (resolve, reject) => {
       let cart = await cartModel.aggregate([
         {
@@ -284,10 +282,8 @@ module.exports = {
       ]);
       console.log(cart);
       const carts = await cartModel.findOne({ user_Id: userId });
-      // console.log(carts);
       if (carts) {
         cart.forEach(async (amt) => {
-          // console.log(amt, "Amount");
           await cartModel.updateMany(
             { "products.productId": amt.Id },
             { $set: { "products.$.subtotal": amt.total } }
@@ -299,7 +295,6 @@ module.exports = {
   },
   getGrandTotal: (userId) => {
     let id = Mongoose.Types.ObjectId(userId);
-    // console.log("Grand Total");
     return new Promise(async (resolve, reject) => {
       let total = await cartModel.aggregate([
         {
