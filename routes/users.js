@@ -185,6 +185,7 @@ router.get("/view-cart", async (req, res) => {
     let subTotal = await userHelpers.getSubTotalAmount(req.session.user._id);
     let grandTotal = await userHelpers.getGrandTotal(req.session.user._id);
     let cartProducts = await userHelpers.getCartItems(userId);
+    console.log(cartProducts);
     if (cartProducts) {
       let notEmpty = cartProducts.products.length != 0;
       res.render("user/cart-view", {

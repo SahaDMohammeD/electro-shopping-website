@@ -309,13 +309,6 @@ module.exports = {
             price: "$products.price",
           },
         },
-        // {
-        //   $project: {
-        //     name: 1,
-        //     quantity: 1,
-        //     price: 1,
-        //   },
-        // },
         {
           $group: {
             _id: null,
