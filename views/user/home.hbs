@@ -307,6 +307,94 @@
 		</div>
 		<!-- /HOT DEAL SECTION -->
 
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">HUAWEI</h3>
+							<div class="section-nav">
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab2" class="tab-pane fade in active">
+									<div class="products-slick" data-nav="#slick-nav-2">
+										<!-- product -->
+										
+									{{#each huawei}}
+									<div class="product">
+										<div class="product-img">
+											<img src="/images/{{this.images.[0].image3}}" alt="" height="220px">
+											<div class="product-label">
+												<span class="sale">{{this.discount}}%</span>
+												<span class="new">NEW</span>
+											</div>
+										</div>
+										<div class="product-body">
+											<h3 class="product-name"><a href="#">{{this.name}}</a></h3>
+											<h4 class="product-price">{{this.price}}<del
+													class="product-old-price">{{this.mrpprice}}</del></h4>
+											<div class="product-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="product-btns">
+												{{#if wishlist}}
+												<button class="add-to-wishlist"
+													onclick="addToWishlist('{{this._id}}')"><a class=""></a><span
+														class="tooltipp">add to
+														wishlist</span></button>
+												{{else}}
+												<button class="add-to-wishlist"
+													onclick="addToWishlist('{{this._id}}')"><a
+														class="fa fa-heart-o"></a><span class="tooltipp">add to
+														wishlist</span></button>
+												{{/if}}
+												<button class="quick-view"><a href="/view-product/{{this._id}}"
+														class="fa fa-eye"></a><span class="tooltipp">quick
+														view</span></button>
+											</div>
+
+										</div>
+										<div class="add-to-cart">
+											<button onclick="addToCart('{{this._id}}')" class="add-to-cart-btn">Add To
+												Cart</button>
+										</div>
+									</div>
+									{{/each}}
+									
+									<!-- /product -->
+										
+									</div>
+									<div id="slick-nav-2" class="products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- /Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
 	<!-- FOOTER -->
 	<footer id="footer">
 		<!-- top footer -->

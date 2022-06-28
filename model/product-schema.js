@@ -12,9 +12,9 @@ const productSchema = new mongoose.Schema({
     default: false,
   },
   category: {
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:'subCategory'},
-    //  brand:{trpe:String,
+    type: String,
+  },
+  brand: {
     type: String,
   },
   images: {

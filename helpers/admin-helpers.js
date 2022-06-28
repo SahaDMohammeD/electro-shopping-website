@@ -30,6 +30,7 @@ module.exports = {
         await newproduct.save(async (err, res) => {
           if (err) {
           }
+          console.log(newproduct,'New Product');
           resolve({ data: res, msg: "success" });
         });
       }

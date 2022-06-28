@@ -11,6 +11,8 @@ const razorpay = require("razorpay");
 router.get("/", async (req, res) => {
   let user = req.session.user;
   let product = await productHelpers.getProduct();
+  let huawei = await productHelpers.getHuawei();
+  console.log(product);
   let wishListCount = null;
   let cartCount = null;
   let cartProduct = null;
@@ -21,6 +23,7 @@ router.get("/", async (req, res) => {
     res.render("user/home", {
       user,
       product,
+      huawei,
       wishListCount,
       cartCount,
       cartProduct,
@@ -29,6 +32,7 @@ router.get("/", async (req, res) => {
   res.render("user/home", {
     user,
     product,
+    huawei,
     wishListCount,
     cartCount,
     cartProduct,
