@@ -114,6 +114,7 @@ router.post(
         let productId = response.data._id;
         let price = response.data.mrpprice;
         let discount = response.data.discount;
+        console.log(req.body,'Req');
         adminHelpers.sellingPrice(productId, price, discount);
         res.redirect("/admin/products");
       });
