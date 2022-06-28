@@ -44,4 +44,24 @@ module.exports = {
       resolve(huawei);
     });
   },
+  getHp: () => {
+    return new Promise(async (resolve, reject) => {
+      // let HUAWEI
+      let huawei = await productModel
+        .find({ brand: 'HP'})
+        .lean();
+      console.log(huawei);
+      resolve(huawei);
+    });
+  },
+  getApple: () => {
+    return new Promise(async (resolve, reject) => {
+      // let HUAWEI
+      let huawei = await productModel
+        .find({ brand: 'APPLE'})
+        .lean();
+      console.log(huawei);
+      resolve(huawei);
+    });
+  },
 };

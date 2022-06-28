@@ -12,6 +12,8 @@ router.get("/", async (req, res) => {
   let user = req.session.user;
   let product = await productHelpers.getProduct();
   let huawei = await productHelpers.getHuawei();
+  let hp = await productHelpers.getHp();
+  let apple = await productHelpers.getApple();
   console.log(product);
   let wishListCount = null;
   let cartCount = null;
@@ -24,6 +26,8 @@ router.get("/", async (req, res) => {
       user,
       product,
       huawei,
+      hp,
+      apple,
       wishListCount,
       cartCount,
       cartProduct,
@@ -33,6 +37,8 @@ router.get("/", async (req, res) => {
     user,
     product,
     huawei,
+    hp,
+    apple,
     wishListCount,
     cartCount,
     cartProduct,
