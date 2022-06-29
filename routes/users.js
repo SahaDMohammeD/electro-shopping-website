@@ -346,8 +346,8 @@ router.get("/deliver-here/:id", async (req, res) => {
     let user = req.session.user;
     let checkOutAddress = await userHelpers.getCheckoutAddress(req.params.id);
     let cartDetailes = await productHelpers.getCartDetailes(user);
-    // let notEmpty = cartDetailes.products.length != 0;
-    // console.log(cartDetailes);
+     //let notEmpty = cartDetailes.products.length != 0;
+     console.log(cartDetailes);
     res.render("user/payment-details", { checkOutAddress, cartDetailes, user });
   } else {
     res.redirect("/");
