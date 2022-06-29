@@ -57,7 +57,7 @@ router.get("/products", (req, res) => {
 
 router.get("/add-category", async (req, res) => {
   const category = await adminHelpers.getCategory();
-  console.log(category);
+  // console.log(category);
   res.render("admin/add-category", { category });
 });
 router.post("/add-category", (req, res) => {

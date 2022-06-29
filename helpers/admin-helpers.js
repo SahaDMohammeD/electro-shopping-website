@@ -121,7 +121,7 @@ module.exports = {
     });
   },
   addCategory: (categoryName) => {
-    console.log(categoryName);
+    // console.log(categoryName);
     return new Promise(async (resolve, reject) => {
       const category = await categoryModel.findOne({
         Name: categoryName.category_Name,
@@ -147,7 +147,7 @@ module.exports = {
   getCategory: () => {
     return new Promise(async (resolve, reject) => {
       const category = await categoryModel.find({}).lean();
-      console.log(category);
+      // console.log(category);
       resolve(category);
     });
   },

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const userHelpers = require("../helpers/user-helpers");
+const adminHelpers = require("../helpers/admin-helpers");
 const productHelpers = require("../helpers/product-helpers");
 var userModel = require("../model/user-schema");
 var flash = require("connect-flash");
@@ -14,6 +15,7 @@ router.get("/", async (req, res) => {
   let huawei = await productHelpers.getHuawei();
   let hp = await productHelpers.getHp();
   let apple = await productHelpers.getApple();
+  let category = await adminHelpers.getCategory();
   console.log(product);
   let wishListCount = null;
   let cartCount = null;
@@ -31,6 +33,7 @@ router.get("/", async (req, res) => {
       wishListCount,
       cartCount,
       cartProduct,
+      category
     });
   }
   res.render("user/home", {
@@ -42,6 +45,7 @@ router.get("/", async (req, res) => {
     wishListCount,
     cartCount,
     cartProduct,
+    category
   });
 });
 
@@ -211,6 +215,7 @@ router.get("/view-cart", async (req, res) => {
   }
 });
 router.get("/add-to-cart/:id", (req, res) => {
+  if(req.session.user){
   let product = req.params.id;
   let user = req.session.user._id;
   userHelpers
@@ -218,10 +223,9 @@ router.get("/add-to-cart/:id", (req, res) => {
     .then((response) => {
       res.json(response);
     })
-    .catch((error) => {
-      // console.log(error.msg);
-      res.redirect("/login");
-    });
+  }else{
+    res.redirect("/login")
+  }
 });
 router.get("/wish-to-cart/:id", (req, res) => {
   let product = req.params.id;
@@ -303,12 +307,16 @@ router.get("/view-wish-list", async (req, res) => {
   }
 });
 router.get("/add-wish-list/:id", async (req, res) => {
+  if(req.session.user){
   let product = req.params.id;
   let user = req.session.user._id;
   userHelpers.changeWishlistButton(product).then();
   userHelpers.addToWishlist(product, user).then((response) => {
     res.json(response);
   });
+}else{
+  res.redirect('/login')
+}
 });
 router.get("/delete-wislist-product/:id", (req, res) => {
   let productId = req.params.id;
@@ -458,6 +466,7 @@ router.get("/orderCancelled", (req, res) => {
 });
 //search product//
 router.post("/search-product", async (req, res) => {
+  let user = req.session.user;
   let searchText = req.body["search_name"];
   console.log(searchText + "Search Product Name");
   try {
@@ -467,7 +476,7 @@ router.post("/search-product", async (req, res) => {
       let searchProduct = products.filter((u) => u.name.includes(searchText));
       console.log("Search Product");
       console.log(searchProduct);
-      res.render("user/search", { searchProduct });
+      res.render("user/search", { searchProduct, user });
     }
   } catch (err) {
     console.log(err);
@@ -476,7 +485,7 @@ router.post("/search-product", async (req, res) => {
 
 router.get("/categoryOne/:key", async (req, res) => {
   let category = req.params.key;
-  console.log(category);
+  // console.log(category);
   let categoryProduct = await userHelpers.getCategoryItems(category);
   res.render("user/categoryOne", { categoryProduct });
 });
